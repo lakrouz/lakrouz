@@ -1,4 +1,4 @@
-package com.usermanager.atosusermanager.cintrollers;
+package com.usermanager.atosusermanager.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

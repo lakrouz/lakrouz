@@ -31,10 +31,10 @@ public class User {
 	@Column(name = "birth_country", length = 100, nullable = false)
 	private String birthCountry;
 
-	@Column(name = "phone_number", nullable = false)
+	@Column(name = "phone_number", nullable = true)
 	private long phoneNumber;
 
-	@Column(name = "gender", nullable = false)
+	@Column(name = "gender", nullable = true)
 	private String gender;
 
 }
