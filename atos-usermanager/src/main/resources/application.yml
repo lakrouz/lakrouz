@@ -1,9 +1,9 @@
 # ===============================
 # SERVER
 # ===============================
-server:
- port: 5000
- 
+#server:
+# port: 5000
+# 
  # ===============================
 # DATABASE & JPA
 # ===============================
@@ -23,16 +23,16 @@ server:
 # 
 #  
 #  
-spring:
- datasource:
-  url: jdbc:mysql://staronedb.ck6ksuvkknz5.us-east-2.rds.amazonaws.com/staronedb
-  username: root
-  password: Mysql2030
- jpa:
-  show-sql: true
-  hibernate:
-    ddl-auto: update
-  properties: 
-   hibernate:
-    dialect: org.hibernate.dialect.MySQL5Dialect
+#spring:
+# datasource:
+#  url: jdbc:mysql://staronedb.ck6ksuvkknz5.us-east-2.rds.amazonaws.com/staronedb
+#  username: root
+#  password: Mysql2030
+# jpa:
+#  show-sql: true
+#  hibernate:
+#    ddl-auto: update
+#  properties: 
+#   hibernate:
+#    dialect: org.hibernate.dialect.MySQL5Dialect
   
