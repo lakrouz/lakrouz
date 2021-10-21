@@ -2,7 +2,7 @@ package com.usermanager.atosusermanager.service;
 
 import java.util.List;
 import com.usermanager.atosusermanager.dto.UserDto;
-import com.usermanager.atosusermanager.exception.UserManagerException;
+import com.usermanager.atosusermanager.exception.UserManagerTechException;
 
 public interface IDataManagerService {
 	/**
@@ -10,7 +10,7 @@ public interface IDataManagerService {
 	 * 
 	 * @param id
 	 * @return
-	 * @throws UserManagerException
+	 * @throws UserManagerTechException
 	 */
 	UserDto getUserById(long id) throws Exception;
 
@@ -18,7 +18,7 @@ public interface IDataManagerService {
 	 * save user
 	 * 
 	 * @param userDto
-	 * @throws UserManagerException
+	 * @throws UserManagerTechException
 	 */
 	UserDto saveUser(UserDto userDto) throws Exception;
 

@@ -16,7 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.usermanager.atosusermanager.dao.IUserDao;
 import com.usermanager.atosusermanager.dto.UserDto;
 import com.usermanager.atosusermanager.entity.User;
-import com.usermanager.atosusermanager.exception.UserManagerException;
+import com.usermanager.atosusermanager.exception.UserManagerTechException;
 import com.usermanager.atosusermanager.mapper.ServiceMapper;
 
 @SpringBootTest
@@ -79,7 +79,7 @@ class DataManagerServiceTest {
 	}
 
 	@Test
-	void saveUser_passing_case1() throws UserManagerException {
+	void saveUser_passing_case1() throws UserManagerTechException {
 		Mockito.when(userDao.save(Mockito.any())).thenThrow(new SQLGrammarException("data base error message's mock", new SQLException()));
 		Exception e = assertThrows(Exception.class, () -> {
 			dataManagerService.saveUser(new UserDto());

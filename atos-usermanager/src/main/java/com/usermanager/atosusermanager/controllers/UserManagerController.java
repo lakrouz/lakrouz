@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.usermanager.atosusermanager.dto.UserDto;
 import com.usermanager.atosusermanager.exception.ErrorMessage;
-import com.usermanager.atosusermanager.exception.UserManagerException;
+import com.usermanager.atosusermanager.exception.UserManagerFuncException;
+import com.usermanager.atosusermanager.exception.UserManagerTechException;
 import com.usermanager.atosusermanager.service.IDataManagerService;
 import com.usermanager.atosusermanager.validator.Validator;
 
@@ -26,37 +27,37 @@ public class UserManagerController {
 
 	// @CrossOrigin("http://localhost:4200")
 	@PostMapping("/addUser")
-	public HttpStatus addUser(@RequestBody UserDto userDto) throws UserManagerException {
+	public HttpStatus addUser(@RequestBody UserDto userDto) throws UserManagerTechException {
 
 		try {
 			if (validator.isAgeUserValid(userDto) && validator.isUserFancais(userDto)) {
-				throw new UserManagerException("vous devez etre français et avoir plus de 18", "101", HttpStatus.INTERNAL_SERVER_ERROR);
+				throw new UserManagerFuncException("vous devez etre français et avoir plus de 18", "101", HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			dataManagerService.saveUser(userDto);
 			return HttpStatus.OK;
 		} catch (Exception e) {
-			throw new UserManagerException("erreur lors de l'ajout d'un nouveau user ", "102", HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new UserManagerTechException("erreur lors de l'ajout d'un nouveau user ", "102", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	// @CrossOrigin("http://localhost:4200")
 	@GetMapping("/getUser")
-	public UserDto getUser(Long id) throws UserManagerException {
+	public UserDto getUser(Long id) throws UserManagerTechException {
 		try {
 			return dataManagerService.getUserById(id);
 		} catch (Exception e) {
 			log.info(e.getMessage());
-			throw new UserManagerException("erreur lors de la récupération de user ", "103", HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new UserManagerTechException("erreur lors de la récupération de user ", "103", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@GetMapping("/getAllUser")
-	public List<UserDto> getAllUser() throws UserManagerException {
+	public List<UserDto> getAllUser() throws UserManagerTechException {
 		try {
 			return dataManagerService.getAllUsers();
 		} catch (Exception e) {
 			log.info(e.getMessage());
-			throw new UserManagerException("erreur lors de la récupération tous les users ", "104", HttpStatus.INTERNAL_SERVER_ERROR);
+			throw new UserManagerTechException("erreur lors de la récupération tous les users ", "104", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -66,8 +67,8 @@ public class UserManagerController {
 	 * @param ex
 	 * @return ErrorMessage
 	 */
-	@ExceptionHandler({ UserManagerException.class })
-	public ErrorMessage handleException(UserManagerException ex) {
+	@ExceptionHandler({ UserManagerTechException.class })
+	public ErrorMessage handleException(UserManagerTechException ex) {
 
 		return new ErrorMessage(ex.getMessage(), ex.getErrorCode());
 	}
