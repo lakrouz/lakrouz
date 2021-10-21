@@ -14,12 +14,15 @@ public class ServiceMapper {
 	 * @return UserDto
 	 */
 	public UserDto mappUserModelToUserDto(User userModel) {
-		UserDto dto = new UserDto();
-		dto.setId(userModel.getId());
-		dto.setUserName(userModel.getUserName());
-		dto.setBirthCountry(userModel.getBirthCountry());
-		dto.setBirthdate(userModel.getBirthdate());
-
+		UserDto dto = null;
+		if (userModel != null) {
+			dto = new UserDto();
+			dto.setId(userModel.getId());
+			dto.setUserName(userModel.getUserName());
+			dto.setBirthCountry(userModel.getBirthCountry());
+			dto.setBirthDate(userModel.getBirthdate());
+			dto.setGender(userModel.getGender());
+		}
 		return dto;
 	}
 
@@ -30,12 +33,14 @@ public class ServiceMapper {
 	 * @return UserDto
 	 */
 	public User mappUserDtoToUserModel(UserDto userDto) {
-		User model = new User();
-		model.setId(userDto.getId());
-		model.setUserName(userDto.getUserName());
-		model.setBirthCountry(userDto.getBirthCountry());
-		model.setBirthdate(userDto.getBirthdate());
-
+		User model = null;
+		if (userDto != null) {
+			model = new User();
+			model.setUserName(userDto.getUserName());
+			model.setBirthCountry(userDto.getBirthCountry());
+			model.setBirthdate(userDto.getBirthDate());
+			model.setGender(userDto.getGender());
+		}
 		return model;
 	}
 

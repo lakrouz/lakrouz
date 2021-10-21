@@ -1,20 +1,39 @@
 package com.usermanager.atosusermanager.service;
 
+import java.util.List;
 import com.usermanager.atosusermanager.dto.UserDto;
+import com.usermanager.atosusermanager.exception.UserManagerException;
 
 public interface IDataManagerService {
 	/**
-	 * récupere un user par son id
+	 * get user by id
 	 * 
-	 * @return User
+	 * @param id
+	 * @return
+	 * @throws UserManagerException
 	 */
-	UserDto getUserById(long id);
+	UserDto getUserById(long id) throws Exception;
 
 	/**
 	 * save user
 	 * 
-	 * @param listUserDto
-	 * @return User
+	 * @param userDto
+	 * @throws UserManagerException
 	 */
-	void saveUser(UserDto userDto);
+	UserDto saveUser(UserDto userDto) throws Exception;
+
+	/**
+	 * @param userDto
+	 * @return getAllUsers
+	 * @throws Exception
+	 */
+	List<UserDto> getAllUsers() throws Exception;
+
+	/**
+	 * @param userDto
+	 * @return getUsersByName
+	 * @throws Exception
+	 */
+	List<UserDto> getUsersByName(UserDto userDto) throws Exception;
+
 }

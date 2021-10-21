@@ -14,13 +14,9 @@ public class UserDto {
 	private long id;
 
 	private String userName;
-
-	private String birthdate;
-
+	private String birthDate;
 	private String birthCountry;
-
 	private long phoneNumber;
-
 	private String gender;
 
 }
